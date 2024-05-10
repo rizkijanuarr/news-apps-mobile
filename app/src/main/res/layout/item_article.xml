@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dp_8"
+    android:layout_marginTop="@dimen/dp_4"
+    android:layout_marginEnd="@dimen/dp_8"
+    android:layout_marginBottom="@dimen/dp_4"
+    app:cardCornerRadius="@dimen/dp_8">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_8">
+
+
+        <ImageView
+            android:id="@+id/image_article"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_100"
+            android:contentDescription="@string/image_article"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_bookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_8"
+            android:contentDescription="@string/save_bookmark"
+            android:src="@drawable/ic_bookmark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_rounded"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/dp_8"
+            android:paddingVertical="@dimen/dp_2"
+            android:textColor="?android:attr/textColorSecondary"
+            android:textSize="@dimen/sp_11"
+            app:layout_constraintBottom_toTopOf="@+id/tv_title"
+            app:layout_constraintEnd_toEndOf="@+id/tv_title"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Laravel" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginTop="@dimen/dp_8"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_author_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@id/image_article"
+            app:layout_constraintTop_toBottomOf="@+id/tv_category"
+            tools:text="7 Fakta Bom Bunuh Diri di Polsek Astanaanyar, Mantan Narapidana Terorisme hingga Lone Wolf" />
+
+        <TextView
+            android:id="@+id/tv_author_date"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginEnd="@dimen/dp_4"
+            android:textColor="?android:attr/textColorSecondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/iv_bookmark"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@id/image_article"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:text="Faisal . 24 Desember 2020" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

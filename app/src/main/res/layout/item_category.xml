@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/cv_category"
+    android:layout_marginVertical="@dimen/dp_8"
+    android:layout_marginHorizontal="@dimen/dp_4"
+    app:cardBackgroundColor="@color/color_card"
+    app:cardCornerRadius="@dimen/dp_5"
+    app:cardElevation="@dimen/dp_0">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:paddingHorizontal="@dimen/dp_8"
+        android:paddingVertical="@dimen/dp_2">
+
+        <TextView
+            android:id="@+id/item_category"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:textColor="?android:attr/textColorPrimary"
+            tools:text="Laravel" />
+    </LinearLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

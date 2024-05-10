@@ -1,60 +1,102 @@
 package com.santrikoding.newsapp.ui.categories
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.santrikoding.newsapp.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import com.santrikoding.newsapp.data.remote.model.Category
+import com.santrikoding.newsapp.databinding.FragmentCategoryBinding
+import com.santrikoding.newsapp.viewmodel.ViewModelFactory
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [CategoryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+/*
+* Deklarasi kelas CategoryFragment sebagai subclass dari Fragment
+* */
 class CategoryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    // Deklarasi variabel binding sebagai nullable FragmentCategoryBinding
+    private var _binding: FragmentCategoryBinding? = null
+    private val binding get() = _binding!!
+
+    // Inisialisasi viewModel dengan viewModels
+    private val viewModel by viewModels<CategoryViewModel> {
+        ViewModelFactory.getInstance(requireContext())
+    }
+
+    // Inisialisasi categoryAllAdapter dengan Lazy
+    private val categoryAllAdapter by lazy {
+        CategoryAllAdapter { category ->
+            detailCategory(category)
         }
     }
 
+    private fun detailCategory(category: Category) {
+        val action = CategoryFragmentDirections.actionNavigationCategoriesToDetailCategoryFragment(
+            slug = category.slug,
+            title = category.name
+        )
+        findNavController().navigate(action)
+    }
+
+    /*
+    * Method onCreateView dipanggil ketika Fragment pertama kali dibuat
+    * */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_category, container, false)
+    ): View {
+        // Inflate layout FragmentHomeBinding dan set ke _binding
+        _binding = FragmentCategoryBinding.inflate(inflater, container, false)
+        // Return root dari _binding
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CategoryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CategoryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    /*
+    * Method onViewCreated dipanggil setelah Fragment dibuat dan tampilan dibuat
+    * */
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        // Panggil method setUi dan setObserver
+        setUi()
+        setObserver()
     }
+
+    /*
+    * Method setObserver untuk mengambil data dari viewModel
+    * */
+    private fun setObserver() {
+        // Memantau Flow category dari viewModel dan mengirimkan data ke categoryAllAdapter dengan collectLatest
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.getCategory.collectLatest {
+                categoryAllAdapter.submitData(it)
+            }
+        }
+    }
+
+    /*
+    * Method setUi untuk menampilkan tampilan pertama kali
+    * */
+    private fun setUi() = with(binding) {
+        // Set adapter categoryAllAdapter ke RecyclerView rvCategory, dengan layout manager horizontal
+        rvCategory.apply {
+            adapter = categoryAllAdapter
+            layoutManager = GridLayoutManager(requireContext(), 3)
+        }
+
+    }
+
+    /*
+    *  Method onDestroyView dipanggil ketika tampilan Fragment dihancurkan
+    * */
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }

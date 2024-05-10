@@ -9,15 +9,67 @@
         android:id="@+id/navigation_home"
         android:name="com.santrikoding.newsapp.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
-    <fragment
-        android:id="@+id/navigation_categories"
-        android:name="com.santrikoding.newsapp.ui.categories.CategoryFragment"
-        android:label="fragment_category"
-        tools:layout="@layout/fragment_category" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_detailArticleFragment"
+            app:destination="@id/detailArticleFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_detailCategoryFragment"
+            app:destination="@id/detailCategoryFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_bookmark"
         android:name="com.santrikoding.newsapp.ui.bookmark.BookmarkFragment"
         android:label="fragment_bookmark"
-        tools:layout="@layout/fragment_bookmark" />
+        tools:layout="@layout/fragment_bookmark" >
+        <action
+            android:id="@+id/action_navigation_bookmark_to_detailArticleFragment"
+            app:destination="@id/detailArticleFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/navigation_categories"
+        android:name="com.santrikoding.newsapp.ui.categories.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/action_navigation_categories_to_detailCategoryFragment"
+            app:destination="@id/detailCategoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailArticleFragment"
+        android:name="com.santrikoding.newsapp.ui.detail.DetailArticleFragment"
+        android:label="fragment_detail_article"
+        tools:layout="@layout/fragment_detail_article" >
+        <argument
+            android:name="article"
+            app:argType="com.santrikoding.newsapp.data.local.entity.ArticleEntity" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailCategoryFragment"
+        android:name="com.santrikoding.newsapp.ui.detail.DetailCategoryFragment"
+        android:label="fragment_detail_category"
+        tools:layout="@layout/fragment_detail_category" >
+        <action
+            android:id="@+id/action_detailCategoryFragment_to_detailArticleFragment"
+            app:destination="@id/detailArticleFragment" />
+        <argument
+            android:name="slug"
+            app:argType="string"
+            android:defaultValue="slug" />
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue="title" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.santrikoding.newsapp.ui.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_detailArticleFragment"
+            app:destination="@id/detailArticleFragment" />
+    </fragment>
 </navigation>
