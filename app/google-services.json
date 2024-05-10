@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "995961774175",
+    "project_id": "news-app-46bc4",
+    "storage_bucket": "news-app-46bc4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:995961774175:android:8c745cbb8a04fda07c3bea",
+        "android_client_info": {
+          "package_name": "com.santrikoding.newsapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAepAMi_HZhU4t_EILWdkro-ENJQMJdR2w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

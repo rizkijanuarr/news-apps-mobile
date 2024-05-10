@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">News Apps</string>
+    <string name="notif_back">Tekan Sekali Lagi untuk Keluar</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_article">Article</string>
+    <string name="nav_category">Category</string>
+    <string name="nav_bookmark">Bookmark</string>
+    <string name="category">Category</string>
+    <string name="new_article">New Article</string>
+    <string name="image_article">Image Article</string>
+    <string name="image_slider">Image Slider</string>
+    <string name="retry">Coba Lagi</string>
+    <string name="save_bookmark">Save Bookmark</string>
+    <string name="bookmark_title">List Bookmark</string>
+    <string name="list_bookmark_empty">List Bookmark Empty</string>
+    <string name="article_title">List Article</string>
+    <string name="category_title">List Category</string>
+    <string name="notification_channel_id">Notification News</string>
+    <string name="notification_channel_name">Notification</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
